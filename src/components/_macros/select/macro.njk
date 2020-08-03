@@ -1,0 +1,16 @@
+{% macro select(config, data) %}
+
+<div class="select-component row flex-column full">
+  <label class="cl-gray font14 on-bold mg-bottom-12" {% if config.id %}for="{{ config.id }}"{% endif %}>
+    {{ data.label }}
+  </label>
+
+  <select {% if config.id %}id="{{ config.id }}" {% endif %}>
+    <option data-display="Selecione">Selecione</option>
+    {% for option in data.options %}
+    <option value="option.value">{{ option.text }}</option>      
+    {% endfor %}
+  </select>
+</div>
+
+{% endmacro %}

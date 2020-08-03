@@ -1,0 +1,80 @@
+{% macro assinarContrato(data) %}
+
+<div class="assinar-contrato-component container">
+  <div class="row">
+    <div class="col-12 col-lg-4 pad-sides-24 data-bank">
+
+      <div class="head-bank mg-top-24 row valign-middle mg-bottom-16">
+        <img src="./assets/images/{{ data.imageBank }}" />
+        <p class="cl-black font16 on-bold">
+          {{ data.bank }}
+        </p>
+      </div>
+
+      <ul class="list">
+        {% for item in data.list %}
+        <li class="item row halign-between valign-middle pad-both-20">
+          <div>
+            <p class="cl-gray font14 on-bold">{{ item.text }}</p>
+          </div>
+
+          {% if item.textInfo %}
+          <div>
+            <p class="cl-gray text-right font14">
+              {{ item.textInfo }}
+            </p>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+
+      {% if data.resume %}
+      <div class="resume mg-top-16 mg-bottom-32">
+        {% for item in data.resume %}
+        <p class="item cl-gray font12 on-bold pad-all-16 row halign-between">
+          <span>
+            {{ item.text }}
+          </span>
+          <span>
+            {{ item.textInfo}}
+          </span>
+        </p>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+    </div>
+    <div class="col-12 col-lg-8">
+      <div class="pad-sides-24 pad-both-32">
+        <h4 class="font16 on-bold cl-gray">
+          {{ data.headContent }}
+        </h4>
+      </div>
+
+      <ul class="to-do pad-sides-24 mg-bottom-24 md__mg-bottom-92">
+        {% for item in data.toDo %}
+        <li class="item pad-left-28 pad-bottom-32">
+          <h5 class="font14 on-bold cl-gray">
+            {{ item.text }}
+          </h5>
+          <p class="font14 cl-gray">
+            {{ item.description }}
+          </p>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="pad-sides-24 mg-bottom-24">
+        {% for info in data.infos %}
+        <p class="font14 cl-gray">
+          {{ info.text }}
+        </p>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endmacro %}

@@ -1,0 +1,143 @@
+{# -------------- #}
+{% set pagename = "Aprovação de crédito 3" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    boxInfoHeader()
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 2
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 3
+        },
+        {
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 0
+        },
+        {
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 0
+        }
+      ],
+      mobile = {
+        titleStep: 'Aprovação de crédito',
+        steps: 10,
+        active: 8
+      }
+    )
+  }}
+
+  {{
+    boxNotification(
+      data = {
+        waiting: true,
+        image: 'timer.png',
+        content: headSection(
+                  data = {
+                    title: 'Aguarde o retorno da aprovação de crédito com os bancos',
+                    text: 'Assim que tivermos as condições aprovadas, iremos te avisar e apresentaremos todos os detalhes nessa página'
+                  }
+                )
+      }
+    )
+  }}
+
+  <div class="content-page" style="display: none;">
+    {{
+      headSection(
+        data = {
+          title: 'Vamos confirmar os valores?',
+          text: 'Você só precisa escolher as melhores condições de financiamento para concluir essa etapa. Vale lembrar que, depois que você confirmar, essas serão as condições definitivas do seu financiamento, tudo bem?'
+        }
+      )
+    }}
+
+    {{
+      boxMsg(
+        config = {
+          textCenter: true,
+          padBoth: 28
+        },
+        data = {
+          text: 'Não se esqueça de conferir as condições de financiamento aprovadas e tomar a sua decisão para irmos para a etapa final'
+        }
+      )
+    }}
+
+    {{
+      cardStatus(
+        data = [
+          {
+            imageBank: 'itau.png',
+            bank: 'Itaú',
+            type: 'aceito'
+          },
+          {
+            imageBank: 'santander.png',
+            bank: 'Santander',
+            type: 'aguardando'
+          }
+        ]
+      )
+    }}
+
+    <div class="analise-juridica row halign-middle mg-both-32" style="display: none">
+      {{
+        button(
+          config = {
+            type: 'secundary',
+            padSides: 32
+          },
+          data = {
+            text: 'Seguir para análise jurídica',
+            link: '#'
+          }
+        )
+      }}
+    </div>
+
+  </div>
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

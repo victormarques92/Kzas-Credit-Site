@@ -1,0 +1,58 @@
+{% macro propertyData(config, data) %}
+
+<section class="property-data">
+  <div class="container">
+    <div class="head">
+      <h2 class="title">Dados do imóvel</h2>
+
+      <ul class="property-data-menu">
+        <li>
+          <a href="#" class="item-menu">Acessar posição financeira</a>
+        </li>
+        <li>
+          <a href="#" class="item-menu">Acessar contrato de compra e venda do imóvel</a>
+        </li>
+        <li>
+          <a href="#" class="item-menu">Solicitar correção de informações</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="row" style="margin-top: 40px; justify-content: space-between">
+
+      <div class="col-lg-6 lg__pad-right-8 mg-bottom-16 lg__mg-bottom-0">
+        <div class="box-info">
+          <div class="col-lg-6">
+            <h4 class="title-box">Condomínio Mais Estilo & Design</h4>
+            <p class="text-box">Torre Design</p>
+            <p class="text-box">Unidade 0102</p>
+            <p class="text-box">2 vagas (0131/0132)</p>
+          </div>
+
+          <div class="col-lg-6 pad-top-16 lg__pad-top-0">
+            <h4 class="title-box">Endereço</h4>
+            <p class="text-box">Rua José de Oliveira Coelho, 808</p>
+            <p class="text-box">Vila Andrade, São Paulo - SP</p>
+            <p class="text-box">05727-240</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 lg__pad-left-8">
+        <div class="box-info">
+          <div class="col-lg-6">
+            <h4 class="title-box">Valor de compra</h4>
+            <p class="text-value">R$ 1.600.000,00</p>
+          </div>
+
+          <div class="col-lg-6 pad-top-16 lg__pad-top-0">
+            <h4 class="title-box">Saldo devedor</h4>
+            <p class="text-value">R$ 550.000,00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endmacro %}

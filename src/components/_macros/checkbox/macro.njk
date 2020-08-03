@@ -1,0 +1,9 @@
+{% macro checkbox(config, data) %}
+
+<label class="label-checkbox row valign-middle pointer font{% if config.fontSize %}{{ config.fontSize }}{% else %}14{% endif %} cl-{% if config.color %}{{ config.color }}{% else %}gray-94{% endif %} {% if config.bold %}on-bold{% endif %} mg-bottom-0 {% if config.mgBoth %}mg-both-{{ config.mgBoth }}{% endif %} {% if config.mgTop %}mg-top-{{ config.mgTop }}{% endif %} pad-left-32" {% if data.dataId %}data-id="{{ data.dataId }}"{% endif %}>
+  {{ data.text }}
+  <input class="pointer" type="checkbox">
+  <span class="checkmark bg-white"></span>
+</label>
+
+{% endmacro %}

@@ -1,0 +1,7 @@
+{% macro link(config, data) %}
+
+  <a class="row {% if config.mgBoth %}mg-both-{{ config.mgBoth }}{% endif %} font{% if config.fontSize %}{{ config.fontSize }}{% else%}12{% endif %} cl-{% if config.color %}{{ config.color }}{% else%}primary{% endif %} on-bold" href="{{ data.link }}">
+    {{ data.text }}
+  </a>
+
+{% endmacro %}

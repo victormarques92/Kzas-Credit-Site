@@ -1,0 +1,48 @@
+{% macro modal(config, data) %}
+
+<div class="modal-component" data-id="{{ data.id }}">
+  <div class="modal-box pad-all-24 bg-white {{ config.type }}">
+    <a href="#" class="btn-close cl-gray-c0" close><i class="fas fa-times"></i></a>
+
+    {% if data.title %}
+    <div class="modal-box-header">
+      <h2 class="font{% if config.fontSizeTitle %}{{ config.fontSizeTitle }}{% else %}20{% endif %} cl-gray on-bold
+        {% if config.titleCenter %}text-center{% endif %}">
+        {{ data.title }}
+      </h2>
+      
+      {% if data.subtitle %}
+      <p class="font{% if config.fontSizeSubtitle %}{{ config.fontSizeSubtitle }}{% else %}16{% endif %} cl-gray
+        {% if config.mgTopSubtitle %}mg-top-{{ config.mgTopSubtitle }}{% endif %}
+        {% if config.textCenter %}text-center{% endif %}">
+        {{ data.subtitle }}
+      </p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="modal-box-body">
+      {{ data.content }}
+    </div>
+
+    {% if data.footer %}
+    <div class="modal-box-footer row mg-top-32">
+        {% for foo in data.footer %}
+        <div class="{{ foo.columns }}">
+          <a class="btn font16 text-center on-bold pad-all-12
+            {% if foo.type %}{{ foo.type}}{% endif %}
+            {% if foo.full %}full{% endif %}"
+            {% if foo.link %}href="{{ foo.link }}"{% endif %}
+            {% if foo.close %}close{% endif %}
+            {% if foo.openModal %}open-modal="{{ foo.openModal }}"{% endif %}>
+            {{ foo.text }}
+          </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endmacro %}

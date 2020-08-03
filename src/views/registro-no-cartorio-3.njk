@@ -1,0 +1,92 @@
+{# -------------- #}
+{% set pagename = "Registro no cartório" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    boxInfoHeader()
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 2
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 1
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 1
+        }
+      ],
+      mobile = {
+        titleStep: 'Aprovação de crédito',
+        steps: 10,
+        active: 10
+      }
+    )
+  }}
+
+  {{
+    boxNotification(
+      data = {
+        waiting: false,
+        image: 'doc_check.png',
+        content: headSection(
+          config = {
+            textSize: 20
+          },
+          data = {
+            title: 'Já estamos com o seu contrato registrado',
+            text: 'Agende a retirada com a nossa equipe no número 5599-9955, o atendimento é de segunda a sábado das 9h às 19h (exceto feriados).'
+          }
+        )
+      }
+    )
+  }}
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

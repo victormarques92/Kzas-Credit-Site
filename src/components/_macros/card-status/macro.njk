@@ -1,0 +1,48 @@
+{% macro cardStatus(config, data) %}
+  
+  <div class="card-status-component lg__pad-sides-72 pad-sides-32 mg-bottom-24">
+    {% for cards in data %}
+    <div class="item-card pad-both-24 pad-sides-16 mg-sides-8 mg-bottom-16 {% if cards.type == 'aguardando' %}waiting{% endif %}">
+      <div class="head-bank row valign-middle mg-bottom-16">
+        <img src="./assets/images/{{ cards.imageBank }}" />
+        <p class="cl-{% if config.colorBank %}{{ config.colorBank }}{% else %}black{% endif %}
+          font{% if config.fontSizeBank %}{{ config.fontSizeBank }}{% else %}16{% endif %} on-bold">
+          {{ cards.bank }}
+        </p>
+      </div>
+
+      <p class="label row halign-between valign-middle pad-both-16 cl-gray font14 on-bold">
+        Confirmação de valores
+      </p>
+
+      {# Status #}
+      {% if cards.type == 'aceito' %}
+      <a href="#" class="row valign-middle font12 on-bold cl-primary mg-top-20" download>
+        <img class="mg-right-16" src="./assets/images/pdf.png" />
+          Fazer download para detalhes
+      </a>
+      {% endif %}
+
+      {% if cards.type == 'aguardando' %}
+      <p class="row valign-middle font12 on-bold cl-gray mg-top-20">
+        <img class="mg-right-16" src="./assets/images/waiting.png" />
+          Aguardando confirmação
+      </p>
+      {% endif %}
+      {# end Status #}
+
+      {% if loop.length > 1 %}
+      <a href="#" class="btn secundary font16 text-center on-bold pad-both-12 pad-sides-20" {% if cards.type == 'aguardando' %}disabled{% endif %}>
+        Escolher este banco
+      </a>
+      {% else %}
+      <a href="#" class="btn secundary font16 text-center on-bold pad-both-12 pad-sides-20" {% if cards.type == 'aguardando' %}disabled{% endif %}>
+        Continuar com este banco
+      </a>
+      {% endif %}
+      
+    </div>
+    {% endfor %}
+  </div>
+
+{% endmacro %}

@@ -1,0 +1,165 @@
+{# -------------- #}
+{% set pagename = "Contrato com o banco" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    boxInfoHeader()
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 2
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 3
+        },
+        {
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 1
+        },
+        {
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 0
+        }
+      ],
+      mobile = {
+        titleStep: 'Aprovação de crédito',
+        steps: 10,
+        active: 9
+      }
+    )
+  }}
+
+  {{
+    boxNotification(
+      data = {
+        waiting: true,
+        image: 'timer.png',
+        content: headSection(
+                  data = {
+                    title: 'Aguarde o retorno da aprovação de crédito com os bancos',
+                    text: 'Assim que tivermos as condições aprovadas, iremos te avisar e apresentaremos todos os detalhes nessa página'
+                  }
+                )
+      }
+    )
+  }}
+
+  <div class="content-page" style="display: none;">
+    {{
+      headSection(
+        data = {
+          title: 'Vamos assinar o seu contrato?',
+          text: 'Assinar o contrato é sempre uma etapa muito importante, não é mesmo?<br/>
+          Separamos algumas informações para te ajudar nos próximos passos.'
+        }
+      )
+    }}
+
+    {{
+      assinarContrato(
+        data = {
+          imageBank: 'itau.png',
+          bank: 'Itaú',
+          list: [
+            {
+              text: 'Valor aprovado',
+              textInfo: 'R$ 1.900.100,00'
+            },
+            {
+              text: 'Total de meses',
+              textInfo: '320'
+            },
+            {
+              text: 'Taxa de juros',
+              textInfo: '8,30% a.a'
+            },
+            {
+              text: 'Valor da primeira parcela',
+              textInfo: 'R$ 8.323,00'
+            },
+            {
+              text: 'Valor do FGTS',
+              textInfo: 'R$ 50.000,00'
+            }
+          ],
+          resume: [
+            {
+              text: 'Valor do imóvel',
+              textInfo: 'R$ 2.761.756,90'
+            },
+            {
+              text: 'Saldo devedor',
+              textInfo: 'R$ 1.900.100,00'
+            }
+          ],
+          headContent: 'Adriano, confira o que você precisa fazer:',
+          toDo: [
+            {
+              text: '1 • Agendar a assinatura',
+              description: 'Caso ainda não tenha feito, é só escolher a melhor data e falar com nossa equipe de atendimento no número (11) 5599-9955.'
+            },
+            {
+              text: '2 • Pagar o ITBI',
+              description: 'No dia da assinatura, você precisa apresentar o ITBI pago. É só pedir o boleto para nossa equipe, tudo bem?'
+            },
+            {
+              text: '3 • Coletar a assinatura do incorporador ',
+              description: 'Não se preocupe: essa parte é com a gente e vamos te avisar quando estiver tudo certo.'
+            }
+          ],
+
+          infos: [
+            {
+              text: 'Se tiver qualquer dúvida, é só falar com nossa equipe no número 5599-9955'
+            },
+            {
+              text: 'O atendimento é de segunda a sábado das 9h às 19h (exceto feriados)'
+            }
+          ]
+        }
+      )
+    }}
+
+  </div>
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

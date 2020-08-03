@@ -1,0 +1,27 @@
+{% macro tabs(config, data) %}
+
+<div class="tabs-component {% if config.topNegative %}top-negative{% endif %}">
+  <div class="container">
+    <ul class="list-head row {% if config.bgColor %}bg-{{ config.bgColor }}{% endif %}">
+
+      {% for datas in data %}
+        <li class="list-head-item pointer font14 on-bold pad-both-12 pad-sides-24
+          {% if datas.tabActive %}active{% endif %}"
+          data-id="tab-{{ loop.index }}">
+          {{ datas.nameTab }}
+        </li>
+      {% endfor %}
+
+    </ul>
+
+    {% for datas in data %}
+      <div class="component-tabs-body pad-top-36
+        {% if datas.tabActive %}active{% endif %}"
+        data-id="tab-{{ loop.index }}">
+        {{ datas.content }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endmacro %}

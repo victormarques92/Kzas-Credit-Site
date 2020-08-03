@@ -1,0 +1,44 @@
+{% macro steps(config, desktop, mobile) %}
+
+  <div class="pad-both-32 steps-component">
+
+    <div class="container">
+
+      <div class="desktop row">
+        {% for desk in desktop %}
+          <div class="col row flex-column mg-right-8">
+            <p class="title-step font12 on-bold cl-{% if desk.sectionActive %}gray{% else %}gray-c4{% endif %}">{{ desk.titleStep }}</p>
+
+            <ul class="box-steps row">
+              {% for i in range(0, desk.steps) %}
+                <li class="steps col
+                  {% if desk.active >= loop.index %}active{% endif %}"></li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="mobile">
+        <div class="mobile-head row halign-between">
+          <p class="title-step font12 on-bold cl-gray">{{ mobile.titleStep }}</p>
+
+          <p class="font12 on-bold cl-gray">{{ mobile.active }} de {{ mobile.steps }}</p>
+        </div>
+        
+        <ul class="box-steps row">
+          {% for i in range(0, mobile.steps) %}
+            <li class="steps col
+                    {% if mobile.active >= loop.index %}active{% endif %}">
+              <i class="icon-step icon-check-a cl-white"></i>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% endmacro %}

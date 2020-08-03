@@ -1,0 +1,13 @@
+{% macro boxMsg(config, data) %}
+
+  <div class="container {% if config.full %}full{% endif %} {% if not config.notMg %}mg-both-56{% endif %}">
+    <div class="box-msg row valign-middle halign-between pad-both-{% if config.padBothGlobal %}{{ config.padBothGlobal }}{% else %}24{% endif %} pad-sides-16 lg__pad-sides-24 full lg__pad-both-{% if config.padBoth %}{{ config.padBoth }}{% else %}16{% endif %}">
+      <span class="text cl-primary font16 on-bold {% if not data.buttonText %}full text-center{% endif %}">{{ data.text }}</span>
+
+      {% if data.buttonText %}
+        <a href="{{ data.buttonLink }}" class="btn primary on-bold pad-all-12 text-center">{{ data.buttonText }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+{% endmacro %}

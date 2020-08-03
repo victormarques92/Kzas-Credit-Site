@@ -1,0 +1,18 @@
+//===============================================
+//                Generator of background extends
+//===============================================
+@each $name in map-keys($colors) {
+  %bg-#{$name} {
+    background: map-get($colors, $name);
+  }
+}
+
+
+//===============================================
+//                     Generator of color extends
+//===============================================
+@each $name in map-keys($colors) {
+  %cl-#{$name} {
+    color: map-get($colors, $name);
+  }
+}

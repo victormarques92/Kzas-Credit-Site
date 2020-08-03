@@ -1,0 +1,47 @@
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.tabs-component {
+  position: relative;
+
+  &::before {
+    background-color: map-get($colors, 'gray-e7');
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &.top-negative {
+    margin-top: -46px;
+  }
+
+  .list-head {
+    &-item {
+      background-color: map-get($colors, 'gray-e7');
+      border: 1px solid map-get($colors, 'gray-e7');
+      border-radius: 20px 20px 0 0;
+      color: map-get($colors, 'gray-91');
+
+      &.active {
+        background-color: map-get($colors, 'white');
+        border-bottom: 1px solid map-get($colors, 'white');
+        color: map-get($colors, 'gray-91');
+      }
+    }
+  }
+
+  .component-tabs-body {
+    border-top: 1px solid map-get($colors, 'gray-e7');
+    display: none;
+    margin-top: -1px;
+
+    &.active {
+      display: block;
+    }
+  }
+}

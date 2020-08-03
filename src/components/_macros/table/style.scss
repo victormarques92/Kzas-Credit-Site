@@ -1,0 +1,203 @@
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.table-component {
+  .input-switch {
+    color: map-get($colors, 'gray-c0');
+  }
+
+  .question {
+    border: 1px solid;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+  }
+
+  .description {
+    max-width: 80%;
+  }
+
+  .label-checkbox {
+    height: 24px;
+    width: 24px;
+  }
+
+  // Desktop
+  .desktop {
+    @media (max-width: 1200px) {
+      display: none;
+    }
+
+    .item {
+      border-bottom: 1px solid darken(map-get($colors, 'gray-f8'), 5%);
+
+      &:last-of-type {
+        border-bottom: 0;
+      }
+
+      .col {
+        border-right: 1px dashed darken(map-get($colors, 'gray-f8'), 5%);
+
+        &:nth-child(2) {
+          background-color: map-get($colors, 'gray-f8');
+          border-right: 0;
+        }
+
+        &:last-of-type {
+          border-right: 0;
+        }
+      }
+
+      .destaque {
+        align-items: center;
+        border-radius: 8px;
+        display: flex;
+        height: 90%;
+        justify-content: center;
+        width: 90%;
+
+        &.active {
+          background-color: map-get($colors, 'destaque');
+          border: 1px solid map-get($colors, 'primary');
+          color: map-get($colors, 'primary');
+        }
+      }
+    }
+  }
+
+  // Mobile
+  .mobile {
+    @media (min-width: 1200px) {
+      display: none;
+    }
+
+    .table-mobile {
+
+      &-head {
+        border-bottom: 1px solid map-get($colors, 'gray-e7');
+        border-top: 1px solid map-get($colors, 'gray-e7');
+
+        .btn-nav {
+          display: block;
+          height: 16px;
+          width: 11px;
+
+          &.disabled {
+            cursor: default;
+            opacity: .3;
+          }
+
+          &.prev {
+            position: relative;
+
+            &::before {
+              background-color: map-get($colors, 'gray-22');
+              content: '';
+              display: block;
+              height: 1px;
+              position: absolute;
+              top: 4px;
+              transform: rotate(-45deg);
+              width: 100%;
+            }
+
+            &::after {
+              background-color: map-get($colors, 'gray-22');
+              bottom: 4px;
+              content: '';
+              display: block;
+              height: 1px;
+              position: absolute;
+              transform: rotate(45deg);
+              width: 100%;
+            }
+          }
+
+          &.next {
+            position: relative;
+
+            &::before {
+              background-color: map-get($colors, 'gray-22');
+              content: '';
+              display: block;
+              height: 1px;
+              position: absolute;
+              top: 4px;
+              transform: rotate(45deg);
+              width: 100%;
+            }
+
+            &::after {
+              background-color: map-get($colors, 'gray-22');
+              bottom: 4px;
+              content: '';
+              display: block;
+              height: 1px;
+              position: absolute;
+              transform: rotate(-45deg);
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      &-body {
+        .box-banks {
+          box-shadow: 2px 0 4px 0 map-get($colors, 'shadow');
+          z-index: 1;
+
+          .list-banks {
+            li {
+              border-top: 1px dashed map-get($colors, 'gray-e7');
+
+              @media(max-width: 395px) {
+                flex-direction: column;
+                text-align: center;
+
+                .mg-left-16 {
+                  margin-left: 0;
+                }
+              }
+
+              .font12 {
+                line-height: 12px;
+
+                @media(max-width: 395px) {
+                  line-height: 16px;
+                }
+              }
+
+              .img-bank {
+                border-radius: 4px;
+
+                @media(max-width: 395px) {
+                  margin-bottom: 8px;
+                }
+              }
+
+              &:first-of-type {
+                background-color: map-get($colors, 'gray-f8');
+                border-top: 0;
+              }
+            }
+          }
+        }
+
+        .box-values {
+          .list-values {
+            li {
+              border-top: 1px dashed map-get($colors, 'gray-e7');
+
+              &:first-of-type {
+                background-color: map-get($colors, 'gray-f8');
+                border-top: 0;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

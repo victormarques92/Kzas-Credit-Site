@@ -1,0 +1,48 @@
+// sass-lint:disable nesting-depth
+// sass-lint:disable no-color-literals
+
+@import 'deps';
+
+.help-float {
+  align-items: center;
+  animation-duration: 1s;
+  animation-name: help-float;
+  animation-timing-function: ease;
+  background-color: map-get($colors, 'white');
+  border: 1px solid map-get($colors, 'primary');
+  border-radius: 50px;
+  bottom: 20px;
+  box-shadow: 0 2px 2px 0 rgba(map-get($colors, 'black'), .16);
+  color: map-get($colors, 'primary');
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  position: fixed;
+  right: 20px;
+  z-index: 1;
+
+  span {
+    padding-left: 15px;
+    padding-right: 10px;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+  }
+}
+
+@keyframes help-float {
+  0% {
+    transform: scale(.5);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

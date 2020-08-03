@@ -1,0 +1,27 @@
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.box-msg {
+  border: 1px solid map-get($colors, 'primary');
+  border-radius: 8px;
+  min-height: 80px;
+
+  @media(max-width: 992px) {
+    flex-direction: column;
+  }
+
+  .text {
+    @media(max-width: 992px) {
+      text-align: center;
+    }
+  }
+
+  .btn {
+    flex: initial;
+
+    @media(max-width: 992px) {
+      margin-top: 13px;
+    }
+  }
+}

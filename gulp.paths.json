@@ -1,0 +1,56 @@
+{
+  "src": {
+    "views": {
+      "files": "./src/views/**/*.njk",
+      "components": "./src/components/**/*.njk",
+      "nunjucks": [
+        "./src/components",
+        "./src/components/_includes",
+        "./src/components/_macros"
+      ]
+    },
+    "injects": {
+      "html": [
+        "./dist/**/*.html"
+      ],
+      "files": [
+        "./dist/assets/css/**/*.css",
+        "./dist/assets/js/**/*.js"
+      ]
+    },
+    "css": {
+      "files": [
+        "./src/scss/main.scss",
+        "./src/components/**/*.scss",
+        "./src/scss/_views/*.scss"
+      ],
+      "all": [
+        "./src/scss/**/*.scss",
+        "./src/components/**/*.scss",
+        "./src/scss/_views/*.scss"
+      ],
+      "imports": "./src/scss"
+    },
+    "js": {
+      "dependencies": [
+        "./node_modules/jquery/dist/jquery.min.js",
+        "./node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"
+      ],
+      "files": [
+        "./src/js/**/*.js",
+        "./src/components/**/*.js"
+      ]
+    },
+    "img": [
+      "./src/images/**/*"
+    ],
+    "fonts": "./src/fonts/**/*"
+  },
+  "dest": {
+    "views": "./dist",
+    "css": "./dist/assets/css",
+    "js": "./dist/assets/js",
+    "img": "./dist/assets/images",
+    "fonts": "./dist/assets/fonts"
+  }
+}

@@ -1,0 +1,165 @@
+{# -------------- #}
+{% set pagename = "Confirmação de Dados 2" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    boxInfoHeader()
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 2
+        },
+        {
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 0
+        },
+        {
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 0
+        },
+        {
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 0
+        },
+        {
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 0
+        }
+      ],
+      mobile = {
+        titleStep: 'Confirmação de informações',
+        steps: 10,
+        active: 2
+      }
+    )
+  }}
+
+  {{
+    headSection(
+      data = {
+        title: 'Suas informações',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, nulla tristique mollis dui eu placerat'
+      }
+    )
+  }}
+
+  {{
+    propertyData()
+  }}
+
+  {{
+    tabs(
+      config = {
+        bgColor: 'gray-f8',
+        topNegative: true
+      },
+      data = [
+        {
+          tabActive: true,
+          nameTab: 'Dados do comprador',
+          content: form(
+                    data = {
+                      dadosComprador: true,
+                      idComprador: 'comprador01',
+                      dadosConjuge: true,
+                      idConjuge: 'conjuge01'
+                    }
+                  )
+        },
+        {
+          nameTab: 'Dados dos compradores 1 e 2',
+          content: form(
+                    data = {
+                      dadosComprador: true,
+                      idComprador: 'comprador02',
+                      dadosConjuge: true,
+                      idConjuge: 'conjuge02'
+                    }
+                  )
+        }
+      ]
+    )
+  }}
+
+  {{
+    boxMsg(
+      data = {
+        text: 'Mais alguém irá compor renda para a compra do imóvel?',
+        buttonText: 'Informar dados do outro comprador'
+      }
+    )
+  }}
+
+  <div class="container">
+    <div class="row buttons-page">
+      <div class="col-lg-6">
+
+        <div class="row valign-middle mg-bottom-32">
+          <div class="col-lg-6 lg__pad-right-8">
+            {{
+              button(
+                config = {
+                  type: 'secundary-invert',
+                  full: true
+                },
+                data = {
+                  text: 'Voltar',
+                  link: '/'
+                }
+              )
+            }}
+          </div>
+          <div class="col-lg-6 row valign-bottom lg__pad-left-8 lg__mg-top-0 mg-top-16">
+            {{
+              button(
+                config = {
+                  type: 'secundary',
+                  full: true
+                },
+                data = {
+                  text: 'Confirmar informações',
+                  link: '#'
+                }
+              )
+            }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

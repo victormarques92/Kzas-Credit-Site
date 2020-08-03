@@ -1,0 +1,325 @@
+{# -------------- #}
+{% set pagename = "Aprovação de crédito 1" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    boxInfoHeader()
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 2
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 1
+        },
+        {
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 0
+        },
+        {
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 0
+        }
+      ],
+      mobile = {
+        titleStep: 'Aprovação de crédito',
+        steps: 10,
+        active: 7
+      }
+    )
+  }}
+
+  {{
+    boxNotification(
+      data = {
+        waiting: true,
+        image: 'timer.png',
+        content: headSection(
+                  data = {
+                    title: 'Aguarde o retorno da aprovação de crédito com os bancos',
+                    text: 'Assim que tivermos as condições aprovadas, iremos te avisar e apresentaremos todos os detalhes nessa página'
+                  }
+                )
+      }
+    )
+  }}
+
+  <div class="content-page" style="display: none">
+    {{
+      headSection(
+        data = {
+          title: 'Sobre a aprovação de crédito',
+          text: 'Agora é só você escolher as melhores condições para o seu financiamento. Dê uma conferida nos prazos das propostas e vale lembrar também do prazo para o Habite-se, tudo bem?<br>
+          Se tiver qualquer dúvida, é só falar com nossa equipe.'
+        }
+      )
+    }}
+
+    {{
+      boxMsg(
+        config = {
+          textCenter: true,
+          padBoth: 28
+        },
+        data = {
+          text: 'Confira todos os detalhes e tome a sua decisão para continuarmos com a análise final dos bancos'
+        }
+      )
+    }}
+
+    {{
+      card(
+        data = [
+          {
+            imageBank: 'itau.png',
+            bank: 'Itaú',
+            content: list(
+                      config = {
+                        itemPadBoth: 16
+                      },
+                      data = [
+                        {
+                          list: [
+                            {
+                              text: 'Taxa de juros',
+                              textInfo: '8,30% a.a'
+                            },
+                            {
+                              text: 'Prazo em meses',
+                              textInfo: '320'
+                            },
+                            {
+                              text: 'valor aprovado',
+                              textInfo: 'R$ 1.900.100,00'
+                            },
+                            {
+                              text: 'Validade da proposta',
+                              textInfo: '13/08/2019'
+                            }
+                          ]
+                        }
+                      ]
+                    )
+                    +
+                    link(
+                      config = {
+                        mgBoth: 16
+                      },
+                      data = {
+                        link: '#',
+                        text: 'Ver condições de financiamento'
+                      }
+                    )
+                    +
+                    checkbox(
+                      config = {
+                        mgTop: 20,
+                        fontSize: 16,
+                        color: 'gray',
+                        bold: true
+                      },
+                      data = {
+                        text: 'Seguir com este banco',
+                        dataId: 'banco-selecionado'
+                      }
+                    )
+          },
+          {
+            imageBank: 'santander.png',
+            bank: 'Santander',
+            content: list(
+                      config = {
+                        itemPadBoth: 16
+                      },
+                      data = [
+                        {
+                          list: [
+                            {
+                              text: 'Taxa de juros',
+                              textInfo: '8,30% a.a'
+                            },
+                            {
+                              text: 'Prazo em meses',
+                              textInfo: '320'
+                            },
+                            {
+                              text: 'valor aprovado',
+                              textInfo: 'R$ 1.900.100,00'
+                            },
+                            {
+                              text: 'Validade da proposta',
+                              textInfo: '13/08/2019'
+                            }
+                          ]
+                        }
+                      ]
+                    )
+                    +
+                    link(
+                      config = {
+                        mgBoth: 16
+                      },
+                      data = {
+                        link: '#',
+                        text: 'Ver condições de financiamento'
+                      }
+                    )
+                    +
+                    checkbox(
+                      config = {
+                        mgTop: 20,
+                        fontSize: 16,
+                        color: 'gray',
+                        bold: true
+                      },
+                      data = {
+                        text: 'Seguir com este banco',
+                        dataId: 'banco-selecionado'
+                      }
+                    )
+          },
+          {
+            imageBank: 'bradesco.png',
+            bank: 'bradesco',
+            content: list(
+                      config = {
+                        itemPadBoth: 16
+                      },
+                      data = [
+                        {
+                          list: [
+                            {
+                              text: 'Taxa de juros',
+                              textInfo: '8,30% a.a'
+                            },
+                            {
+                              text: 'Prazo em meses',
+                              textInfo: '320'
+                            },
+                            {
+                              text: 'valor aprovado',
+                              textInfo: 'R$ 1.900.100,00'
+                            },
+                            {
+                              text: 'Validade da proposta',
+                              textInfo: '13/08/2019'
+                            }
+                          ]
+                        }
+                      ]
+                    )
+                    +
+                    link(
+                      config = {
+                        mgBoth: 16
+                      },
+                      data = {
+                        link: '#',
+                        text: 'Ver condições de financiamento'
+                      }
+                    )
+                    +
+                    button(
+                      config = {
+                        type: 'secundary'
+                      },
+                      data = {
+                        text: 'Seguir com este banco',
+                        openModal: 'modal-prosseguir'
+                      }
+                    )
+          }
+        ]
+      )
+    }}
+
+    <div class="analise-juridica row halign-middle mg-both-32" style="display: none">
+      {{
+        button(
+          config = {
+            type: 'secundary',
+            padSides: 32
+          },
+          data = {
+            text: 'Seguir para análise jurídica',
+            link: '#'
+          }
+        )
+      }}
+    </div>
+
+  </div>
+
+  {{
+    modal(
+      config = {
+        type: 'small',
+        mgTopSubtitle: 28,
+        fontSizeTitle: 20,
+        fontSizeSubtitle: 14
+      },
+      data = {
+        id: 'modal-prosseguir',
+        title: 'Confirma prosseguir com o Itaú?',
+        subtitle: 'Quando se tem a intensão de usar o FGTS para a compra do imóvel, o processo pode ocorrer apenas com um banco. Deseja prosseguir o processo com o Itaú?',
+        footer: [
+          {
+            columns: 'col-lg-3 pad-sides-8',
+            type: 'secundary-invert',
+            full: true,
+            text: 'Não',
+            close: true
+          },
+          {
+            columns: 'col-lg-9 pad-sides-8',
+            type: 'secundary',
+            full: true,
+            text: 'Sim, quero prosseguir com este banco',
+            link: '#'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

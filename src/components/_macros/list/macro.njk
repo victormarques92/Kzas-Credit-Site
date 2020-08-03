@@ -1,0 +1,59 @@
+{% macro list(config, data) %}
+
+  <div class="list-component">
+    {% for datas in data %}
+
+      <div class="item-list">
+        <h4 class="font24 on-bold cl-gray mg-bottom-16
+      {% if datas.mgTopTitle %}mg-top-{{ datas.mgTopTitle }}{% endif %}">
+          {{ datas.title }}
+        </h4>
+
+        <ul>
+          {% for item in datas.list %}
+
+            <li class="item row halign-between valign-middle pad-both-{% if config.itemPadBoth %}{{ config.itemPadBoth }}{% else %}20{% endif %}">
+              <div>
+                <p class="cl-gray font{% if config.fontSize %}{{ config.fontSize }}{% else %}14{% endif %} on-bold">{{ item.text }}</p>
+                {% if item.status %}
+                  <span class="status {{ item.status }} font12 pad-sides-8">{{ item.statusName }}</span>
+                {% endif %}
+              </div>
+
+              {% if item.textInfo %}
+                <div>
+                  <p class="cl-gray text-right font{% if config.fontSize %}{{ config.fontSize }}{% else %}14{% endif %}">
+                    {{ item.textInfo }}
+                  </p>
+                </div>
+              {% endif %}
+
+
+              {% if item.valido or item.upload %}
+              <div class="box-action pad-right-8">
+
+                {% if item.valido %}
+                  <a class="cl-gray font24 pointer"
+                  {% if item.openModal %}open-modal="{{ item.openModal }}{% endif %}">
+                    <i class="far fa-eye"></i>
+                  </a>
+                {% endif %}
+
+                {% if item.upload %}
+                  <a class="upload cl-primary font24 pointer" {% if item.openModal %}open-modal="{{ item.openModal }}{% endif %}">
+                    <i class="fas fa-sign-out-alt"></i>
+                  </a>
+                {% endif %}
+
+              </div>
+              {% endif %}
+            </li>
+
+          {% endfor %}
+        </ul>
+      </div>
+
+    {% endfor %}
+  </div>
+
+{% endmacro %}

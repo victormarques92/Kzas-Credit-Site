@@ -1,0 +1,171 @@
+{# -------------- #}
+{% set pagename = "Confirmação de Dados 1" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 1
+        },
+        {
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 0
+        },
+        {
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 0
+        },
+        {
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 0
+        },
+        {
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 0
+        }
+      ],
+      mobile = {
+        titleStep: 'Confirmação de informações',
+        steps: 10,
+        active: 1
+      }
+    )
+  }}
+
+  {{
+    headSection(
+      data = {
+        title: 'Criar conta',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, nulla tristique mollis dui eu placerat'
+      }
+    )
+  }}
+
+  <form class="index-form-component" action="">
+
+    <div class="row mg-top-60 mg-bottom-32">
+      <div class="col-12">
+        {{
+          input(
+            config = {
+              id: 'nome-completo',
+              placeholder: 'Nome completo'
+            },
+            data = {
+              label: 'Nome completo'
+            }
+          )
+        }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 lg__pad-right-8">
+        {{
+          input(
+            config = {
+              id: 'mobile-phone',
+              placeholder: 'Informe DDD e Celular',
+              mask: 'cellphone_with_ddd'
+            },
+            data = {
+              label: 'Qual o seu número de celular?'
+            }
+          )
+        }}
+      </div>
+      <div class="col-lg-6 row valign-bottom lg__pad-left-8 lg__mg-top-0 mg-top-16">
+        {{
+          button(
+            config = {
+              full: true,
+              dataId: 'btn-send-code'
+            },
+            data = {
+              text: 'Enviar código'
+            }
+          )
+        }}
+      </div>
+    </div>
+
+    <div class="row mg-top-16">
+      <div class="col-12">
+        {{
+          checkbox(
+            data = {
+              text: 'Aceito receber o código de validação e alertas de status em meu WhatsApp'
+            }
+          )
+        }}
+      </div>
+    </div>
+
+    <div class="row mg-top-32" data-id="validation-code">
+      <div class="col-lg-6">
+        {{
+          input(
+            config = {
+              id: 'cod',
+              mask: 'validation_code'
+            },
+            data = {
+              label: 'Código de validação'
+            }
+          )
+        }}
+      </div>
+    </div>
+
+    <div class="row mg-top-32 mg-bottom-44 halign-middle">
+      <div class="col-lg-6">
+        {{
+          button(
+            config = {
+              dataId: 'create-account',
+              type: 'disabled',
+              full: true
+            },
+            data = {
+              text: 'Criar minha conta',
+              link: '/confirmacao-dados-2.html'
+            }
+          )
+        }}
+      </div>
+    </div>
+
+  </form>
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

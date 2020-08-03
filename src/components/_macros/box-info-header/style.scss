@@ -1,0 +1,39 @@
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.box-info-header {
+  height: 64px;
+  position: relative;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .row {
+    border-bottom: 1px solid map-get($colors, 'gray-e7');
+  }
+
+  .saldo-devedor {
+    display: flex;
+
+    @media (max-width: 992px) {
+      border-bottom: 1px solid map-get($colors, 'gray-e7');
+      padding-bottom: 13px;
+      width: 100%;
+    }
+
+    i {
+      transform: rotate(-45deg);
+    }
+  }
+
+  .count-inhabit {
+    @media (max-width: 992px) {
+      padding-bottom: 7px;
+      padding-top: 20px;
+      width: 100%;
+    }
+  }
+}

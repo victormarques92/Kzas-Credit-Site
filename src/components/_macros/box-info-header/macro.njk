@@ -1,0 +1,26 @@
+{% macro boxInfoHeader(config, data) %}
+
+<div class="box-info-header">
+  <div class="container">
+    <div class="row valign-middle halign-between pad-both-12">
+      <div class="saldo-devedor valign-middle">
+        <i class="fas fa-thumbtack font20 mg-right-20"></i>
+        <div>
+          <p class="cl-gray font14 on-bold">
+            Saldo devedor: R$ 1.000.000,00
+          </p>
+          <div class="font12 cl-gray-6f">
+            Próxima atualização: 26/08/2019
+          </div>
+        </div>
+      </div>
+
+      <p class="count-inhabit font14 cl-gray on-bold">
+        Faltam <span class="number-days">{n}</span> dias paraa data do Habite-se
+      </p>
+    </div>
+  </div>
+</div>
+
+
+{% endmacro %}

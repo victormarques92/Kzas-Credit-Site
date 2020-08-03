@@ -1,0 +1,44 @@
+{# Import macros #}
+{% block macros %}
+  {% from "assinar-contrato/macro.njk" import assinarContrato %}
+  {% from "box-info-header/macro.njk" import boxInfoHeader %}
+  {% from "box-msg/macro.njk" import boxMsg %}
+  {% from "box-notification/macro.njk" import boxNotification %}
+  {% from "button/macro.njk" import button %}
+  {% from "card/macro.njk" import card %}
+  {% from "card-status/macro.njk" import cardStatus %}
+  {% from "checkbox/macro.njk" import checkbox %}
+  {% from "footer/macro.njk" import footer %}
+  {% from "form/macro.njk" import form %}
+  {% from "head-section/macro.njk" import headSection %}
+  {% from "help/macro.njk" import help %}
+  {% from "input/macro.njk" import input %}
+  {% from "link/macro.njk" import link %}
+  {% from "list/macro.njk" import list %}
+  {% from "modal/macro.njk" import modal %}
+  {% from "navigation/macro.njk" import navigation %}
+  {% from "property-data/macro.njk" import propertyData %}
+  {% from "select/macro.njk" import select %}
+  {% from "simulation-history/macro.njk" import simulationHistory %}
+  {% from "steps/macro.njk" import steps %}
+  {% from "table/macro.njk" import table %}
+  {% from "tabs/macro.njk" import tabs %}
+  {% from "text/macro.njk" import text %}
+  {% from "title/macro.njk" import title %}
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    {% block head %}
+      {% include "head/template.njk" %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+    {% endblock %}
+
+    <!-- inject:js -->
+    <!-- endinject -->
+  </body>
+</html>

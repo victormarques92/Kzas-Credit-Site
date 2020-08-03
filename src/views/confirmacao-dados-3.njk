@@ -1,0 +1,386 @@
+{# -------------- #}
+{% set pagename = "Confirmação de Dados 3" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 3
+        },
+        {
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 0
+        },
+        {
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 0
+        },
+        {
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 0
+        },
+        {
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 0
+        }
+      ],
+      mobile = {
+        titleStep: 'Confirmação de informações',
+        steps: 10,
+        active: 3
+      }
+    )
+  }}
+
+  {{
+    headSection(
+      data = {
+        title: 'Documentos para confirmação de informações',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, nulla tristique mollis dui eu placerat'
+      }
+    )
+  }}
+
+  {{
+    boxMsg(
+      data = {
+        text: 'Nessa etapa você precisa confirmar seus documentos - aqueles que não possuir em mãos, você poderá incluir após a simulação de financiamento'
+      }
+    )
+  }}
+
+  {{
+    tabs(
+      data = [
+        {
+          tabActive: true,
+          nameTab: 'Documentos dos compradores 1 e 2',
+          content: text(
+                    config = {
+                      onBold: true,
+                      fontSize: 14
+                    },
+                    data = {
+                      text: '2 de 22 anexados - 9% concluído'
+                    }
+                  )
+                  +
+                  list(
+                    data = [
+                      {
+                        mgTopTitle: 32,
+                        title: 'Documentos para a comprovação de dados pessoais',
+                        list: [
+                          {
+                            text: 'RG, CNH ou RNE',
+                            status: 'analise',
+                            statusName: 'Documento em análise'
+                          },
+                          {
+                            text: 'Certidão de Casameto',
+                            status: 'validado',
+                            statusName: 'Documento validado',
+                            valido: true
+                          },
+                          {
+                            text: 'Registro de Pacto Antenupcial',
+                            status: 'validado',
+                            statusName: 'Documento validado',
+                            valido: true
+                          },
+                          {
+                            text: 'Comprovante de residência <span class="not-bold">(com menos de 60 dias)</span>',
+                            status: 'invalido',
+                            statusName: 'Documento validado',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          }
+                        ]
+                      },
+                      {
+                        mgTopTitle: 16,
+                        title: 'Documentos para a comprovação de dados de renda',
+                        list: [
+                          {
+                            text: 'Holerite <span class="not-bold">(mês JUL/2019)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Holerite <span class="not-bold">(mês JUN/2019)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Holerite <span class="not-bold">(mês MAI/2019)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'CTPS <span class="not-bold">(páginas dos registros de trabalho)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'CTPS <span class="not-bold">(páginas de anotações gerais)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Imposto de Renda <span class="not-bold">(recibos da declaração)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Imposto de Renda <span class="not-bold">(cópia da declaração)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Extrato FGTS',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          }
+                        ]
+                      }
+                    ]
+                  )
+                  +
+                  title(
+                    config = {
+                      mgTop: 16,
+                      mgBottom: 32,
+                      textSize: 20,
+                      textColor: 'gray-94'
+                    },
+                    data = {
+                      title: 'Documentos do cônjuge'
+                    }
+                  )
+                  +
+                  list(
+                    data = [
+                      {
+                        title: 'Documentos para a comprovação de dados pessoais',
+                        list: [
+                          {
+                            text: 'RG, CNH ou RNE',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Comprovante de residência <span class="not-bold">(com menos de 60 dias)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          }
+                        ]
+                      },
+                      {
+                        mgTopTitle: 16,
+                        title: 'Documentos para a comprovação de dados de renda',
+                        list: [
+                          {
+                            text: 'Holerite <span class="not-bold">(mês JUL/2019)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Holerite <span class="not-bold">(mês JUN/2019)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Holerite <span class="not-bold">(mês MAI/2019)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'CTPS <span class="not-bold">(páginas dos registros de trabalho)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'CTPS <span class="not-bold">(páginas de anotações gerais)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Imposto de Renda <span class="not-bold">(recibos da declaração)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Imposto de Renda <span class="not-bold">(cópia da declaração)</span>',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          },
+                          {
+                            text: 'Extrato FGTS',
+                            upload: true,
+                            openModal: 'enviar-arquivo'
+                          }
+                        ]
+                      }
+                    ]
+                  )
+        }
+      ]
+    )
+  }}
+
+  <div class="container">
+    <div class="row buttons-page">
+      <div class="col-lg-7">
+
+        <div class="row valign-middle mg-both-32">
+          <div class="col-lg-6 lg__pad-right-8">
+            {{
+              button(
+                config = {
+                  type: 'secundary-invert',
+                  full: true
+                },
+                data = {
+                  text: 'Voltar',
+                  link: 'confirmacao-dados-2.html'
+                }
+              )
+            }}
+          </div>
+          <div class="col-lg-6 row valign-bottom lg__pad-left-8 lg__mg-top-0 mg-top-16">
+            {{
+              button(
+                config = {
+                  type: 'secundary',
+                  full: true
+                },
+                data = {
+                  text: 'Seguir para a simulação de crédito',
+                  link: '#'
+                }
+              )
+            }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {{
+    modal(
+      config = {
+        type: 'small',
+        titleCenter: true
+      },
+      data = {
+        id: 'enviar-arquivo',
+        title: 'Como prefere enviar este arquivo?',
+        content: '
+        <div class="row mg-top-20 lg__mg-top-12 halign-between">
+          <a href="#" class="send-archive text-center cl-primary row flex-column halign-middle mg-right-24" open-modal="tirar-foto">
+            <i class="fas fa-camera"></i>
+
+            <p class="cl-primary lg__mg-top-44">Quero tirar uma foto</p>
+          </a>
+          <a href="#" class="send-archive text-center cl-primary row flex-column halign-middle mg-left-24" open-modal="carregar-arquivo">
+            <i class="far fa-folder-open"></i>
+
+            <p class="lg__mg-top-44">Carregar arquivo</p>
+          </a>
+        </div>
+        '
+      }
+    )
+  }}
+
+  {{
+    modal(
+      config = {
+        type: 'large',
+        mgTopSubtitle: 24
+      },
+      data = {
+        id: 'tirar-foto',
+        title: 'Posicione o documento na área indicada',
+        subtitle: 'Certifique-se que seus dados estejam legíveis, sem reflexos ou dobras.',
+        content: '
+        <div class="box-camera mg-top-16">
+          <a class="pointer btn-foto" open-modal="verificar-foto">
+            <i class="fas fa-camera"></i>
+          </a>
+        </div>
+        '
+      }
+    )
+  }}
+
+  {{
+    modal(
+      config = {
+        type: 'large',
+        mgTopSubtitle: 24
+      },
+      data = {
+        id: 'verificar-foto',
+        title: 'Verifique a qualidade da foto',
+        subtitle: 'Verifique se os dados estão legíveis - se estiverem, basta enviar, cado contrário, tire uma nova foto.',
+        content: '
+        <div class="box-foto">
+        </div>
+        ',
+        footer: [
+          {
+            columns: 'col-lg-6 pad-sides-8',
+            type: 'primary-invert',
+            full: true,
+            text: 'Tirar foto novamente',
+            openModal: 'tirar-foto'
+          },
+          {
+            columns: 'col-lg-6 pad-sides-8',
+            type: 'primary',
+            full: true,
+            text: 'Enviar esta foto',
+            close: true
+          }
+        ]
+      }
+    )
+  }}
+
+
+
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

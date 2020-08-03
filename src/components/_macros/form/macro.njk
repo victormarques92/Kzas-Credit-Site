@@ -1,0 +1,483 @@
+{% macro form(data) %}
+
+  {% if data.dadosComprador %}
+    <div class="row" data-id="{{ data.idComprador }}">
+      <div class="col-lg-6">
+        <!-- ===== Informações Pessoais ===== -->
+        <h3 class="font24 on-bold cl-gray mg-bottom-44">Informações pessoais</h3>
+
+        <div class="input-component row flex-column full">
+          <label class="cl-gray font14 on-bold mg-bottom-12" for="nome-completo">Nome completo</label>
+          <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="text" id="nome-completo" placeholder="Informe seu nome completo"/>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 lg__pad-right-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="cpf">CPF</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cpf" type="text" id="cpf" placeholder="Informe seu CPF"/>
+            </div>
+          </div>
+
+          <div class="col-lg-6 lg__pad-left-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="doc">Documento de identificação</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="text" id="doc" placeholder="Informe seu RG ou CNH"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 lg__pad-right-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="data-nascimento">Data de nascimento</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 date" type="text" id="data-nascimento" placeholder="DD/MM/AAAA"/>
+            </div>
+          </div>
+
+          <div class="col-lg-6 lg__pad-left-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="data-nascimento">Data de nascimento</label>
+
+              <select id='estado-civil'>
+                <option data-display="Selecione">Selecione</option>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="divorciado">Divorciado(a)</option>
+                <option value="viuvo">Viúvo(a)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <label class="input-switch mg-top-32" data-id="uniao-estavel">
+              <span class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </span>
+              Vivo em união estável com outra pessoa
+            </label>
+
+            <label class="input-switch mg-top-32" data-id="uniao-estavel-cartorio" style="display: none">
+              <span class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </span>
+              Tenho união estável registrada em cartório
+            </label>
+
+          </div>
+        </div>
+
+        <!-- ===== Dados de contato ===== -->
+        <h3 class="font24 on-bold cl-gray mg-top-48">Dados de contato</h3>
+
+        <div class="input-component row flex-column full mg-top-48">
+          <label class="cl-gray font14 on-bold mg-bottom-12" for="email">E-mail</label>
+          <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="email" id="email" placeholder="Informe seu endereço de e-mail"/>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 lg__pad-right-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="celular">Telefone celular</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cellphone_with_ddd" type="text" id="celular" placeholder="(99) 99999-9999"/>
+            </div>
+          </div>
+
+          <div class="col-lg-6 lg__pad-left-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="fixo">Telefone fixo</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 phone_with_ddd" type="text" id="fixo" placeholder="(99) 9999-9999"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Fonte de renda ===== -->
+        <div class="box-fonte-renda" data-id="titular">
+          <div class="item-renda mg-top-48">
+
+            <!-- Title -->
+            <h3 class="font24 on-bold cl-gray">Fonte de renda <span class="num-renda"></span></h3>
+
+            <!-- Filtro -->
+            <div class="row">
+              <div class="col-lg-6 lg__pad-right-8">
+                <div class="input-component row flex-column full mg-top-32">
+                  <label class="cl-gray font14 on-bold mg-bottom-12" for="renda">Qual sua fonte de renda?</label>
+
+                  <select id="renda">
+                    <option data-display="Selecione">Selecione</option>
+                    <option value="aposentado">Aposentado</option>
+                    <option value="assalariado">Assalariado</option>
+                    <option value="autonomo">Autônomo</option>
+                    <option value="empresario">Empresário</option>
+                    <option value="funcionario-publico">Funcionário Público</option>
+                    <option value="pensionista">Pensionista</option>
+                    <option value="produtor-rural">Produtor Rural</option>
+                    <option value="profissional-liberal">Profissional Liberal</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-6 lg__pad-left-8">
+                <div class="input-component row flex-column full mg-top-32">
+                  <label class="cl-gray font14 on-bold mg-bottom-12" for="renda-bruta">Renda mensal bruta</label>
+                  <div class="box-money">
+                    <input id="renda-bruta" type="text" class="input-form full cl-gray font16 pad-both-12 pad-sides-16 money" placeholder="0,00"/>
+                    <span class="simbol">R$</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Informações da empresa -->
+            <div class="info-empresa" style="display: none">
+              <h3 class="font20 on-bold cl-gray mg-top-48">Informações da empresa</h3>
+
+              <div class="input-component row flex-column full mg-top-48">
+                <label class="cl-gray font14 on-bold mg-bottom-12" for="razao-social">Razão social</label>
+                <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="text" id="razao-social" placeholder="Empresa Exemplo LTDA"/>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6 lg__pad-right-8">
+                  <div class="input-component row flex-column full mg-top-32">
+                    <label class="cl-gray font14 on-bold mg-bottom-12" for="cnpj">CNPJ</label>
+                    <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cnpj" type="text" id="cnpj" placeholder="439.444.929/0001-19"/>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 lg__pad-left-8">
+                  <div class="input-component row flex-column full mg-top-32">
+                    <label class="cl-gray font14 on-bold mg-bottom-12" for="cep">cep</label>
+                    <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cep" type="text" id="cep" placeholder="04533-129"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão Adicionar/remover renda -->
+            <div class="row">
+              <div class="col-lg-6 mg-top-32">
+                <a class="btn primary-invert font16 text-center on-bold pad-all-12">Adicionar outra fonte de renda</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===== Características do financiamento ===== -->
+        <h3 class="font24 on-bold cl-gray mg-top-48">Características do financiamento</h3>
+
+        <div class="input-component row flex-column full mg-top-32">
+          <label class="cl-gray font14 on-bold mg-bottom-12">Em quais bancos você possui conta?</label>
+
+          <ul>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/bb.png"/>
+                Banco do Brasil
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/caixa.png"/>
+                Caixa
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/santander.png"/>
+                Santander
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/itau.png"/>
+                Itau
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox" style="padding-left: 40px">
+                Outros bancos
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ===== usar FGTS ===== -->
+        <label class="input-switch" data-id="usar-fgts-titular">
+          <span class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </span>
+          Pretendo usar meu FGTS
+        </label>
+
+        <div class="row mg-top-32" style="display: none;" data-id="valor-fgts-titular">
+          <div class="col-lg-6">
+
+            <div class="input-component row flex-column full">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="saldo-fgts">Valor do saldo do FGTS</label>
+              <div class="box-money">
+                <input id="saldo-fgts" type="text"
+                  class="input-form full cl-gray font16 pad-both-12 pad-sides-16 money" placeholder="0,00"/>
+                <span class="simbol">R$</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  {% endif %}
+
+  {% if data.dadosConjuge %}
+    <div class="box-conjuge row" data-id="{{ data.idConjuge }}" style="display: none;">
+      <div class="col-lg-6">
+        <h4 class="font20 on-bold cl-gray-94 mg-bottom-32 mg-top-48">Dados do cônjuge</h4>
+
+        <!-- ===== Informações Pessoais ===== -->
+        <h3 class="font24 on-bold cl-gray mg-bottom-48">Informações pessoais</h3>
+
+        <div class="input-component row flex-column full">
+          <label class="cl-gray font14 on-bold mg-bottom-12" for="nome-completo">Nome completo</label>
+          <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="text" id="nome-completo" placeholder="Informe seu nome completo"/>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 lg__pad-right-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="cpf">CPF</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cpf" type="text" id="cpf" placeholder="Informe seu CPF"/>
+            </div>
+          </div>
+
+          <div class="col-lg-6 lg__pad-left-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="doc">Documento de identificação</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="text" id="doc" placeholder="Informe seu RG ou CNH"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 lg__pad-right-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="data-nascimento">Data de nascimento</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 date" type="text" id="data-nascimento" placeholder="DD/MM/AAAA"/>
+            </div>
+          </div>
+
+          <div class="col-lg-6 lg__pad-left-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="data-nascimento">Data de nascimento</label>
+
+              <select id='estado-civil'>
+                <option data-display="Selecione">Selecione</option>
+                <option value="solteiro">Solteiro(a)</option>
+                <option value="casado">Casado(a)</option>
+                <option value="divorciado">Divorciado(a)</option>
+                <option value="viuvo">Viúvo(a)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Dados de contato ===== -->
+        <h4 class="font24 on-bold cl-gray mg-both-48">Dados de contato</h4>
+
+        <div class="input-component row flex-column full mg-top-48">
+          <label class="cl-gray font14 on-bold mg-bottom-12" for="email">E-mail</label>
+          <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="email" id="email" placeholder="Informe seu endereço de e-mail"/>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 lg__pad-right-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="celular">Telefone celular</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cellphone_with_ddd" type="text" id="celular" placeholder="(99) 99999-9999"/>
+            </div>
+          </div>
+
+          <div class="col-lg-6 lg__pad-left-8">
+            <div class="input-component row flex-column full mg-top-32">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="fixo">Telefone fixo</label>
+              <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 phone_with_ddd" type="text" id="fixo" placeholder="(99) 9999-9999"/>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Fonte de renda ===== -->
+        <div class="box-fonte-renda" data-id="conjuge">
+          <div class="item-renda">
+            <h4 class="font24 on-bold cl-gray mg-both-48">Fonte de renda <span class="num-renda"></span></h4>
+
+            <!-- Filtro -->
+            <div class="row">
+              <div class="col-lg-6 lg__pad-right-8">
+                <div class="input-component row flex-column full">
+                  <label class="cl-gray font14 on-bold mg-bottom-12" for="renda">Qual sua fonte de renda?</label>
+
+                  <select id="renda">
+                    <option data-display="Selecione">Selecione</option>
+                    <option value="aposentado">Aposentado</option>
+                    <option value="assalariado">Assalariado</option>
+                    <option value="autonomo">Autônomo</option>
+                    <option value="empresario">Empresário</option>
+                    <option value="funcionario-publico">Funcionário Público</option>
+                    <option value="pensionista">Pensionista</option>
+                    <option value="produtor-rural">Produtor Rural</option>
+                    <option value="profissional-liberal">Profissional Liberal</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-lg-6 lg__pad-left-8">
+                <div class="input-component row flex-column full mg-top-32 lg__mg-top-0">
+                  <label class="cl-gray font14 on-bold mg-bottom-12" for="renda-bruta">Renda mensal bruta</label>
+                  <div class="box-money">
+                    <input id="renda-bruta" type="text" class="input-form full cl-gray font16 pad-both-12 pad-sides-16 money" placeholder="0,00"/>
+                    <span class="simbol">R$</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Informações da empresa -->
+            <div class="info-empresa" style="display: none">
+              <h4 class="font20 on-bold cl-gray mg-top-48">Informações da empresa</h4>
+
+              <div class="input-component row flex-column full mg-top-48">
+                <label class="cl-gray font14 on-bold mg-bottom-12" for="razao-social">Razão social</label>
+                <input class="input-form cl-gray font16 pad-both-12 pad-sides-16" type="text" id="razao-social" placeholder="Empresa Exemplo LTDA"/>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6 lg__pad-right-8">
+                  <div class="input-component row flex-column full mg-top-32">
+                    <label class="cl-gray font14 on-bold mg-bottom-12" for="cnpj">CNPJ</label>
+                    <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cnpj" type="text" id="cnpj" placeholder="439.444.929/0001-19"/>
+                  </div>
+                </div>
+
+                <div class="col-lg-6 lg__pad-left-8">
+                  <div class="input-component row flex-column full mg-top-32">
+                    <label class="cl-gray font14 on-bold mg-bottom-12" for="cep">cep</label>
+                    <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 cep" type="text" id="cep" placeholder="04533-129"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão Adicionar/remover renda -->
+            <div class="row">
+              <div class="col-lg-6 mg-top-32">
+                <a class="btn primary-invert font16 text-center on-bold pad-all-12">Adicionar outra fonte de renda</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <label class="input-switch mg-top-32" data-id="conjuge-compor-compra">
+          <span class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </span>
+
+          <p>Cônjuge irá compor renda na compra do imóvel <span class="not-bold">(será o comprador 2)</span></p>
+        </label>
+
+        <!-- ===== Características do financiamento ===== -->
+        <h3 class="font24 on-bold cl-gray mg-top-48">Características do financiamento</h3>
+
+        <div class="input-component row flex-column full mg-top-32">
+          <label class="cl-gray font14 on-bold mg-bottom-12">Em quais bancos você possui conta?</label>
+
+          <ul>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/bb.png"/>
+                Banco do Brasil
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/caixa.png"/>
+                Caixa
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/santander.png"/>
+                Santander
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox">
+                <img src="./assets/images/itau.png"/>
+                Itau
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+            <li class="mg-bottom-24">
+              <label class="label-checkbox" style="padding-left: 40px">
+                Outros bancos
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <label class="input-switch mg-top-32" data-id="usar-fgts-conjuge">
+          <span class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </span>
+          Cônjuge pretende usar o FGTS
+        </label>
+
+        <div class="row mg-top-32" style="display: none;" data-id="valor-fgts-conjuge">
+          <div class="col-lg-6">
+
+            <div class="input-component row flex-column full">
+              <label class="cl-gray font14 on-bold mg-bottom-12" for="saldo-fgts">Valor do saldo do FGTS</label>
+              <div class="box-money">
+                <input id="saldo-fgts" type="text"
+                  class="input-form full cl-gray font16 pad-both-12 pad-sides-16 money" placeholder="0,00"/>
+                <span class="simbol">R$</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  {% endif %}
+
+{% endmacro %}

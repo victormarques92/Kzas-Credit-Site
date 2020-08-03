@@ -1,0 +1,13 @@
+{% macro text(config, data) %}
+
+  <p class="{% if config.color %}cl-{{ config.color }}{% else %}gray{% endif %}
+    {% if config.onBold %}on-bold{% endif %}
+    font{% if config.fontSize %}{{ config.fontSize }}{% else %}16{% endif %}
+    {% if config.textCenter %}text-center{% endif %}
+    {% if config.padBoxNotification %}lg__pad-sides-72 pad-sides-32{% endif %}
+    {% if config.mgTop %}mg-top-{{ config.mgTop }}{% endif %}
+    {% if config.mgBottom %}mg-bottom-{{ config.mgBottom }}{% endif %}">
+    {{ data.text }}
+  </p>
+
+{% endmacro %}

@@ -1,0 +1,129 @@
+// sass-lint:disable clean-import-paths
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.property-data {
+  background-color: map-get($colors, 'gray-f8');
+  border-bottom: 1px solid map-get($colors, 'gray-e7');
+  padding-bottom: 122px;
+  padding-top: 40px;
+
+  .head {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 992px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .title {
+      color: map-get($colors, 'gray');
+      font-size: 24px;
+      font-weight: 700;
+
+      @media (max-width: 992px) {
+        margin-bottom: 30px;
+      }
+    }
+
+    .property-data-menu {
+      display: flex;
+
+      @media (max-width: 992px) {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      li {
+        .item-menu {
+          border-right: 1px solid map-get($colors, 'gray-c4');
+          color: map-get($colors, 'primary');
+          font-size: 12px;
+          padding: 0 16px;
+
+          @media (max-width: 992px) {
+            border-right: 0;
+            display: block;
+            padding: 5px 0;
+          }
+
+          &:hover {
+            color: darken(map-get($colors, 'primary'), 10%);
+          }
+        }
+
+        &:last-of-type {
+          .item-menu {
+            border: 0;
+          }
+        }
+      }
+
+    }
+  }
+
+  .box-info {
+    background: map-get($colors, 'white');
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 16px 20px 0;
+
+    @media (max-width: 992px) {
+      padding-left: 16px;
+    }
+
+    div {
+      padding-left: 16px;
+
+      @media (max-width: 992px) {
+        padding-left: 0;
+      }
+
+      &:first-of-type {
+        border-right: 1px solid map-get($colors, 'gray-c4');
+      }
+    }
+
+    .title-box {
+      color: map-get($colors, 'gray-6f');
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      padding-right: 16px;
+    }
+
+    .text-box {
+      color: map-get($colors, 'gray');
+      font-size: 14px;
+      line-height: 20px;
+      padding-right: 16px;
+    }
+
+    .text-value {
+      color: map-get($colors, 'gray');
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 41px;
+      margin-top: 24px;
+      padding-right: 16px;
+
+      @media (max-width: 340px) {
+        font-size: 25px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      div {
+        &:first-of-type {
+          border-bottom: 1px solid map-get($colors, 'gray-c4');
+          border-right: 0;
+          padding-bottom: 16px;
+        }
+      }
+    }
+  }
+}

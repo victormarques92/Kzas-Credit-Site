@@ -1,0 +1,525 @@
+{# -------------- #}
+{% set pagename = "Simulação de crédito 2" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+{{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+{{
+    boxInfoHeader()
+  }}
+
+{{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 1
+        },
+        {
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 0
+        },
+        {
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 0
+        },
+        {
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 0
+        }
+      ],
+      mobile = {
+        titleStep: 'Simulação de crédito',
+        steps: 10,
+        active: 4
+      }
+    )
+  }}
+
+{{
+    headSection(
+      data = {
+        title: 'Simulação de crédito',
+        text: 'Texto deve deixar claro que esta é uma simulação com valores aproximados e poderão ser alterados no momento de avaliação de crédito pelo banco'
+      }
+    )
+  }}
+
+<div class="pad-top-40 pad-bottom-60 bg-gray-f8">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-12">
+        {{
+        title(
+          config = {
+            mgBottom: 48,
+            textSize: 24
+          },
+          data = {
+            title: 'Faça uma simulação de crédito para seu financiamento'
+          }
+        )
+      }}
+      </div>
+
+      <div class="col-xl-2 xl__pad-right-16 pad-right-0 mg-bottom-32 xl__mg-bottom-0">
+        {{
+        input(
+          config = {
+            id: 'valor-imovel',
+            readonly: true,
+            boxMoney: true
+          },
+          data = {
+            label: 'Valor do imóvel',
+            value: '2.761.746,90'
+          }
+        )
+      }}
+      </div>
+
+      <div class="col-xl-2 xl__pad-right-16 pad-right-0 mg-bottom-32 xl__mg-bottom-0">
+        {{
+        input(
+          config = {
+            id: 'totl-fgts',
+            boxMoney: true
+          },
+          data = {
+            label: 'Total do FGTS',
+            value: '50.000,00'
+          }
+        )
+      }}
+      </div>
+
+      <div class="col-xl-2 xl__pad-right-16 pad-right-0 mg-bottom-32 xl__mg-bottom-0">
+        {{
+        input(
+          config = {
+            id: 'valor-financiamento',
+            boxMoney: true
+          },
+          data = {
+            label: 'Valor do financiamento',
+            value: '1.900.100,00'
+          }
+        )
+      }}
+      </div>
+
+      <div class="col-xl-2 xl__pad-right-16 pad-right-0 mg-bottom-32 xl__mg-bottom-0">
+        {{
+        input(
+          config = {
+            id: 'renda-bruta-total',
+            boxMoney: true
+          },
+          data = {
+            label: 'Renda bruta total',
+            value: '8.000,00'
+          }
+        )
+      }}
+      </div>
+
+      <div class="col-xl-2 xl__pad-right-16 pad-right-0 mg-bottom-32 xl__mg-bottom-0">
+        {{
+        select(
+          config = {
+            id: 'tempo-meses'
+          },
+          data = {
+            label: 'Tempo em meses',
+            options: [
+              { value: '120', text: '120' },
+              { value: '240', text: '240' },
+              { value: '360', text: '360' }
+            ]
+          }
+        )
+      }}
+      </div>
+
+      <div class="col-xl-2 row valign-bottom">
+        {{
+        button(
+          config = {
+            type: 'primary',
+            full: true,
+            fontSize: 14,
+            padBoth: 16
+          },
+          data = {
+            text: 'Simular financiamento',
+            link: '#'
+          }
+        )
+      }}
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="lg__pad-sides-72 pad-sides-32">
+  {{
+      table(
+        data = [
+          {
+            switchText: 'Exibir destaques',
+            switchDataId: 'show-destaques',
+            infos: [
+              {
+                logoBanco: 'itau.png',
+                banco: 'Itaú'
+              },
+              {
+                logoBanco: 'santander.png',
+                banco: 'Santander'
+              },
+              {
+                logoBanco: 'bb.png',
+                banco: 'Banco do Brasil'
+              },
+              {
+                logoBanco: 'bradesco.png',
+                banco: 'Bradesco'
+              },
+              {
+                logoBanco: 'caixa.png',
+                banco: 'Caixa Econômica'
+              }
+            ]
+          },
+          {
+            title: 'Tenho conta neste banco',
+            openModal: '#',
+            infos: [
+              { 
+                text: 'Sim',
+                color: 'success',
+                bold: true,
+                destaque: true
+              },
+              { 
+                text: 'Sim',
+                color: 'success',
+                bold: true,
+                destaque: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              }
+            ]
+          },
+          {
+            title: 'Banco financia antes do Habite-se',
+            openModal: '#',
+            infos: [
+              { 
+                text: 'Sim',
+                color: 'success',
+                bold: true,
+                destaque: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              }
+            ]
+          },
+          {
+            title: 'Taxa de juros',
+            openModal: '#',
+            infos: [
+              { text: '8,30 % a.a.' },
+              { text: '8,30 % a.a.', destaque: true },
+              { text: '8,30 % a.a.' },
+              { text: '8,30 % a.a.' },
+              { text: '8,30 % a.a.' }
+            ]
+          },
+          {
+            title: 'Custo Efetivo Total - CET',
+            openModal: '#',
+            infos: [
+              { text: '8,88% a.a.' },
+              { text: '8,88% a.a.' },
+              { text: '8,88% a.a.' },
+              { text: '8,88% a.a.' },
+              { text: '8,88% a.a.', destaque: true }
+            ]
+          },
+          {
+            title: 'Tarifa de avaliação do imóvel',
+            openModal: '#',
+            infos: [
+              { text: 'R$ 3.420,00' },
+              { text: 'R$ 3.420,00', destaque: true },
+              { text: 'R$ 3.420,00' },
+              { text: 'R$ 3.420,00' },
+              { text: 'R$ 3.420,00' }
+            ]
+          },
+          {
+            title: 'Despesas relacionadas a escritura',
+            openModal: '#',
+            infos: [
+              { text: 'R$ 138.087,34', destaque: true },
+              { text: 'R$ 138.087,34' },
+              { text: 'R$ 138.087,34' },
+              { text: 'R$ 138.087,34' },
+              { text: 'R$ 138.087,34' }
+            ]
+          },
+          {
+            title: 'Financia despesas relacionadas a escritura',
+            openModal: '#',
+            infos: [
+              { 
+                text: 'Sim',
+                color: 'success',
+                bold: true,
+                destaque: true
+              },
+              { 
+                text: 'Sim',
+                color: 'success',
+                bold: true,
+                destaque: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              },
+              { 
+                text: 'Não',
+                color: 'danger',
+                bold: true
+              },
+              { 
+                text: 'Sim',
+                color: 'success',
+                bold: true
+              }
+            ]
+          },
+          {
+            title: 'Valor da primeira parcela',
+            openModal: '#',
+            infos: [
+              { text: 'R$ 8.323,00', destaque: true },
+              { text: 'R$ 8.323,00' },
+              { text: 'R$ 8.323,00' },
+              { text: 'R$ 8.323,00' },
+              { text: 'R$ 8.323,00' }
+            ]
+          },
+          {
+            title: 'Valor da última parcela',
+            openModal: '#',
+            infos: [
+              { text: 'R$ 6.553,22' },
+              { text: 'R$ 6.553,22' },
+              { text: 'R$ 6.553,22', destaque: true },
+              { text: 'R$ 6.553,22' },
+              { text: 'R$ 6.553,22' }
+            ]
+          },
+          {
+            title: 'Tempo estimado para liberação do financiamento',
+            openModal: '#',
+            infos: [
+              { text: '5 dias', destaque: true },
+              { text: '5 dias' },
+              { text: '5 dias' },
+              { text: '5 dias' },
+              { text: '5 dias' }
+            ]
+          },
+          {
+            title: 'Escolha os bancos de sua preferência',
+            description: 'Ao escolher os bancos de sua preferência, nossa equipe irá negociar as taxas para conseguir as melhores condições de financiamento para você',
+            infos: [
+              {
+                logoBanco: 'itau.png',
+                banco: 'Itaú',
+                checkbox: true,
+                checkboxDataId: 'banco-preferencia'
+              },
+              {
+                logoBanco: 'santander.png',
+                banco: 'Santander',
+                checkbox: true,
+                checkboxDataId: 'banco-preferencia'
+              },
+              {
+                logoBanco: 'bb.png',
+                banco: 'Banco do Brasil',
+                checkbox: true,
+                checkboxDataId: 'banco-preferencia'
+              },
+              {
+                logoBanco: 'bradesco.png',
+                banco: 'Bradesco',
+                checkbox: true,
+                checkboxDataId: 'banco-preferencia'
+              },
+              {
+                logoBanco: 'caixa.png',
+                banco: 'Caixa Econômica',
+                checkbox: true,
+                checkboxDataId: 'banco-preferencia'
+              }
+            ]
+          }
+        ]
+      )
+    }}
+</div>
+
+<div class="container pad-both-24 mg-bottom-80">
+  {{
+      text(
+        config = {
+          onBold: true,
+          fontSize: 12,
+          color: 'gray-6c'
+        },
+        data = {
+          text: 'Foi considerado para esta simulação o sistema de amortização SAC.'
+        }
+      )
+    }}
+</div>
+
+{{
+    simulationHistory(
+      log = [
+        {
+          date: '09/08/2019',
+          hours: '09:44',
+          valorFinanciamento: '1.900.100,00',
+          totalFGTS: '50.000,00',
+          rendaBrutaMensal: '8.000,00',
+          tempo: '360 meses',
+          linkSimulacao: '#'
+        },
+        {
+          date: '09/08/2019',
+          hours: '09:44',
+          valorFinanciamento: '1.900.100,00',
+          totalFGTS: '50.000,00',
+          rendaBrutaMensal: '8.000,00',
+          tempo: '360 meses',
+          linkSimulacao: '#'
+        }
+      ]
+    )
+  }}
+
+  <div class="container">
+    <div class="row buttons-page">
+      <div class="col-lg-7">
+
+        <div class="row valign-middle mg-bottom-32">
+          <div class="col-lg-6 lg__pad-right-8">
+            {{
+                button(
+                  config = {
+                    type: 'secundary-invert',
+                    full: true
+                  },
+                  data = {
+                    text: 'Voltar',
+                    link: '#'
+                  }
+                )
+              }}
+          </div>
+          <div class="col-lg-6 row valign-bottom lg__pad-left-8 lg__mg-top-0 mg-top-16">
+            {{
+                button(
+                  config = {
+                    type: 'disabled',
+                    full: true,
+                    dataId: 'solicitar-aprovacao'
+                  },
+                  data = {
+                    text: 'Solicitar aprovação de crédito',
+                    link: '#'
+                  }
+                )
+              }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{{ help() }}
+{{ footer() }}
+
+{% endblock %}

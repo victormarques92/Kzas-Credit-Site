@@ -1,0 +1,25 @@
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.navigation {
+  border-bottom: 1px solid darken(map-get($colors, 'white'), 8.25%);
+  height: 80px;
+
+  img {
+    max-height: 48px;
+  }
+
+  li {
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    .item-menu {
+      border: 1px solid;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+    }
+  }
+}

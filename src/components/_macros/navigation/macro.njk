@@ -1,0 +1,22 @@
+{% macro navigation(config, data) %}
+
+<nav class="navigation bg-white pad-both-16">
+  <div class="container">
+    <div class="row valign-middle halign-between">
+      <img src="./assets/images/{% if data.logo %}{{ data.logo }}{% else %}logo.png{% endif%}"
+      alt="{% if data.altLogo %}{{ data.altLogo }}{% else %}Logo Kzas{% endif%}">
+      
+      <ul class="row halign-middle">
+        {% for menu in data.listMenu %}
+        <li class="mg-right-16">
+          <a class="item-menu row halign-middle valign-middle cl-primary font20"
+          href="{% if menu.link %}{{ menu.link }}{% else %}#{% endif %}">
+          <i class="{{ menu.icon }}"></i>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  </div>
+</nav>
+{% endmacro %}

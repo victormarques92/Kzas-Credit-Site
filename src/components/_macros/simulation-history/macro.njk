@@ -1,0 +1,20 @@
+{% macro simulationHistory(config, log) %}
+
+<div class="simulation-history-component container">
+  <h4 class="font20 mg-bottom-20">Histórico de simulações</h4>
+
+  <ul class="mg-bottom-32">
+    {% for logs in log %}
+    <li class="row pad-both-24 halign-between font12">
+      <p class="on-bold">Simulação 00{{ loop.index }} - {{ logs.date }} - {{ logs.hours }}</p>
+      <p>Valor do financiamento: R$ {{ logs.valorFinanciamento }}</p>
+      <p>Toltal FGTS: R$ {{ logs.totalFGTS }}</p>
+      <p>Renda bruta mensal: R$ {{ logs.rendaBrutaMensal }}</p>
+      <p>Tempo: {{ logs.tempo }}</p>
+      <a class="cl-primary on-bold" href="{{ logs.linkSimulacao }}">Carregar simulação</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endmacro %}

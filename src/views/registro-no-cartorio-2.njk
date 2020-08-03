@@ -1,0 +1,107 @@
+{# -------------- #}
+{% set pagename = "Registro no cartório" %}
+{# -------------- #}
+
+{% extends "default.njk" %}
+
+{% block header %}{% endblock %}
+
+{% block content %}
+  {{
+    navigation(
+      data = {
+        listMenu: [
+          {
+            icon: 'fas fa-bell'
+          },
+          {
+            icon: 'fas fa-user'
+          }
+        ]
+      }
+    )
+  }}
+
+  {{
+    boxInfoHeader()
+  }}
+
+  {{
+    steps(
+      desktop = [
+        {
+          sectionActive: true,
+          titleStep: 'Confirmação de informações',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Simulação de crédito',
+          steps: 2,
+          active: 2
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Aprovação de crédito',
+          steps: 3,
+          active: 3
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Contrato com o banco',
+          steps: 1,
+          active: 1
+        },
+        {
+          sectionActive: true,
+          titleStep: 'Registro no cartório',
+          steps: 1,
+          active: 1
+        }
+      ],
+      mobile = {
+        titleStep: 'Aprovação de crédito',
+        steps: 10,
+        active: 10
+      }
+    )
+  }}
+
+  {{
+    boxNotification(
+      data = {
+        waiting: false,
+        image: 'doc_waiting.png',
+        content: headSection(
+          config = {
+            textSize: 20
+          },
+          data = {
+            title: 'O contrato do seu imóvel já está no cartório',
+            text: 'Vamos te avisar quando o registro estiver pronto para que você possa agendar a retirada com a gente.'
+          }
+        )
+        +
+        boxMsg(
+          config = {
+            full: true,
+            notMg: true,
+            textCenter: true,
+            padBothGlobal: 16,
+            padBoth: 16
+          },
+          data = {
+            text: '11º Cartório de Registro de Imóveis de São Paulo <br>
+                    R. Nelson Gama de Oliveira, 365 - Vila Andrade, São Paulo - SP <br>
+                    PROTOCOLO: 123456-78/2019 - DATA: 09/08/2019'
+          }
+        )
+      }
+    )
+  }}
+
+  {{ help() }}
+  {{ footer() }}
+
+{% endblock %}

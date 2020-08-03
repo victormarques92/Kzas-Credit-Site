@@ -1,0 +1,23 @@
+{% macro card(config, data) %}
+
+<div class="card-component mg-bottom-24">
+  <div class="container">
+    <div class="row halign-middle">
+      {% for cards in data %}
+      <div class="item-card pad-both-24 pad-sides-16 mg-sides-8 mg-bottom-16">
+        <div class="head-bank row valign-middle mg-bottom-16">
+          <img src="./assets/images/{{ cards.imageBank }}" />
+          <p class="cl-{% if config.colorBank %}{{ config.colorBank }}{% else %}black{% endif %}
+          font{% if config.fontSizeBank %}{{ config.fontSizeBank }}{% else %}16{% endif %} on-bold">
+            {{ cards.bank }}
+          </p>
+        </div>
+
+        {{ cards.content }}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endmacro %}

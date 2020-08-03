@@ -1,0 +1,9 @@
+{% macro headSection(config, data) %}
+
+<div class="head-section pad-both-16 lg__pad-sides-72 pad-sides-32">
+  <h1 class="cl-gray font28 on-bold mg-bottom-16 text-center">{{ data.title }}</h1>
+
+  <p class="cl-gray font{% if config.textSize %}{{ config.textSize }}{% else %}16{% endif %} text-center">{{ data.text }}</p>
+</div>
+
+{% endmacro %}

@@ -1,0 +1,55 @@
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.box-camera {
+  background-color: map-get($colors, 'gray-c4');
+  height: 458px;
+  position: relative;
+  width: 800px;
+
+  @media (max-width: 992px) {
+    height: 225px;
+    max-width: 100%;
+  }
+
+  .btn-foto {
+    align-items: center;
+    background-color: map-get($colors, 'primary');
+    border-radius: 50px;
+    bottom: -10px;
+    color: map-get($colors, 'white');
+    display: flex;
+    font-size: 18px;
+    height: 48px;
+    justify-content: center;
+    left: calc(50% - 24px);
+    position: absolute;
+    width: 48px;
+  }
+}
+
+.box-foto {
+  background-color: map-get($colors, 'gray-c4');
+  display: block;
+  height: 360px;
+  margin: 0 auto;
+  margin-top: 38px;
+  width: 704px;
+
+  @media (max-width: 992px) {
+    height: 225px;
+    max-width: 100%;
+  }
+}
+
+.buttons-page {
+  @media (max-width: 992px) {
+    .col-lg-6 {
+      &:first-of-type {
+        margin-top: 26px;
+        order: 1;
+      }
+    }
+  }
+}

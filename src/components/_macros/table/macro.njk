@@ -1,0 +1,197 @@
+{% macro table(config, data) %}
+
+<div class="table-component container">
+  {# Desktop #}
+  <div class="desktop">
+    <div class="info row cl-primary on-bold font14 pad-both-24">
+      <div class="col-5">
+        <p>Simulação 001 - 09/08/2019 - 09:44</p>
+      </div>
+      <div class="col pad-left-20">
+        <p>Banco da obra</p>
+      </div>
+    </div>
+
+    <ul>
+      {% for item in data %}
+      <li class="item row">
+        <div class="col-5 row valign-middle pad-both-20">
+          {% if item.switchText %}
+          <label class="input-switch" data-id="{{ item.switchDataId }}">
+            <span class="switch">
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </span>
+            {{ item.switchText }}
+          </label>
+          {% else %}
+          <p class="font16 on-bold cl-gray">{{ item.title }}</p>
+          {% if item.openModal %}
+          <span class="question font12 cl-gray-c0 mg-left-16 row halign-middle valign-middle on-bold pointer"
+            open-modal="{{ item.openModal }}">?</span>
+          {% endif %}
+          {% if item.description %}
+          <p class="description font14">{{ item.description }}</p>
+          {% endif %}
+          {% endif %}
+        </div>
+
+        {% for info in item.infos %}
+        <div class="col">
+          {% if info.logoBanco %}
+          <div class="row flex-column halign-middle valign-middle pad-top-16 pad-bottom-12">
+            <img src="./assets/images/{{ info.logoBanco }}" />
+            <p class="font12 on-bold mg-top-8">{{ info.banco }}</p>
+
+            {% if info.checkbox %}
+            <div class="row halign-middle mg-top-8">
+              <label class="label-checkbox" data-id="{{ info.checkboxDataId }}">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            {% endif %}
+          </div>
+          {% else %}
+          <div class="row flex-column halign-middle valign-middle {% if not info.destaque %}pad-both-20{% endif %}"
+            {% if info.destaque %}style="height: 100%" {% endif %}>
+            <p
+              class="font16 {% if info.bold %}on-bold{% endif %} cl-{% if info.color %}{{ info.color }}{% else %}gray{% endif %} {% if info.destaque %}destaque{% endif %}">
+              {{ info.text }}</p>
+          </div>
+          {% endif %}
+
+        </div>
+        {% endfor %}
+      </li>
+      {% endfor %}
+
+    </ul>
+  </div>
+
+  {# Mobile #}
+  <div class="mobile">
+    <div class="info row cl-primary on-bold font14 pad-both-24">
+      <div class="col-12">
+        <p>Simulação 001 - 09/08/2019 - 09:44</p>
+      </div>
+
+      <div class="col-12 mg-top-44">
+        <label class="input-switch" data-id="{{ item.switchDataId }}">
+          <span class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+          </span>
+          Exibir destaques
+        </label>
+      </div>
+    </div>
+
+    <div class="table-mobile">
+
+      <div class="table-mobile-head pad-sides-12 pad-both-20 sm__pad-sides-32 row valign-middle">
+        <!-- Prev -->
+        <div class="col-auto">
+          <a href="#" class="btn-nav prev"></a>
+        </div>
+
+        <!-- Title -->
+        <div class="col">
+          <h3 class="font16 on-bold text-center">
+            Lorem ipsum
+          </h3>
+        </div>
+
+        <!-- Next -->
+        <div class="col-auto">
+          <a href="#" class="btn-nav next"></a>
+        </div>
+      </div>
+
+      <div class="table-mobile-body row">
+        <div class="col-6 box-banks">
+          <ul class="list-banks">
+            <li class="row valign-middle pad-both-20 pad-sides-16">
+              <img class="img-bank" src="./assets/images/itau.png" />
+              <div class="mg-left-16">
+                <p class="font12 on-bold">
+                  Itaú
+                </p>
+                <p class="font12 on-bold cl-gray-94">
+                  banco da obra
+                </p>
+              </div>
+            </li>
+            <li class="row valign-middle pad-both-20 pad-sides-16">
+              <img class="img-bank" src="./assets/images/santander.png" />
+              <div class="mg-left-16">
+                <p class="font12 on-bold">
+                  Santander
+                </p>
+              </div>
+            </li>
+            <li class="row valign-middle pad-both-20 pad-sides-16">
+              <img class="img-bank" src="./assets/images/bb.png" />
+              <div class="mg-left-16">
+                <p class="font12 on-bold">
+                  Banco do Brasil
+                </p>
+              </div>
+            </li>
+            <li class="row valign-middle pad-both-20 pad-sides-16">
+              <img class="img-bank" src="./assets/images/bradesco.png" />
+              <div class="mg-left-16">
+                <p class="font12 on-bold">
+                  Bradesco
+                </p>
+              </div>
+            </li>
+            <li class="row valign-middle pad-both-20 pad-sides-16">
+              <img class="img-bank" src="./assets/images/caixa.png" />
+              <div class="mg-left-16">
+                <p class="font12 on-bold">
+                  Caixa Econômica
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6 box-values">
+          <ul class="list-values">
+            <li class="row valign-middle halign-middle pad-both-20 pad-sides-16">
+              <span class="font16 cl-gray-22">
+                8,30 % a.a.
+              </span>
+            </li>
+            <li class="row valign-middle halign-middle pad-both-20 pad-sides-16">
+              <span class="font16 cl-gray-22">
+                8,30 % a.a.
+              </span>
+            </li>
+            <li class="row valign-middle halign-middle pad-both-20 pad-sides-16">
+              <span class="font16 cl-gray-22">
+                8,30 % a.a.
+              </span>
+            </li>
+            <li class="row valign-middle halign-middle pad-both-20 pad-sides-16">
+              <span class="font16 cl-gray-22">
+                8,30 % a.a.
+              </span>
+            </li>
+            <li class="row valign-middle halign-middle pad-both-20 pad-sides-16">
+              <span class="font16 cl-gray-22">
+                8,30 % a.a.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+{% endmacro %}

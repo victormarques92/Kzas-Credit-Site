@@ -1,0 +1,15 @@
+{% macro title(config, data) %}
+  {% if data.title %}
+    <h2 class="component-title
+    {% if config.mgBoth %}mg-both-{{ config.mgBoth }}{% endif %}
+    {% if config.mgTop %}mg-top-{{ config.mgTop }}{% endif %}
+    {% if config.mgBottom %}mg-bottom-{{ config.mgBottom }}{% endif %}
+    cl-{% if config.textColor %}{{ config.textColor }}{% else %}gray{% endif %}
+    {% if config.textSize %}font{{ config.textSize }}{% endif %}
+    {% if config.textCenter %}text-center{% endif %}
+    {% if config.uppercase %}uppercase{% endif %}
+    ">
+    {{ data.title }}
+    </h2>
+  {% endif %}
+{% endmacro %}

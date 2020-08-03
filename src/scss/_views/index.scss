@@ -1,0 +1,10 @@
+.index-form-component {
+  margin: 0 auto;
+  width: 50%;
+
+  @media (max-width: 992px) {
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+  }
+}

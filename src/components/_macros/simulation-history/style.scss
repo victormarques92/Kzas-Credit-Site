@@ -1,0 +1,17 @@
+// sass-lint:disable nesting-depth
+
+.simulation-history-component {
+  ul {
+    li {
+      p {
+        @media (max-width: 1150px) {
+          display: none;
+
+          &:first-of-type {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

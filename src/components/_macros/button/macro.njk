@@ -1,0 +1,11 @@
+{% macro button(config, data) %}
+
+  <a class="btn {% if config.type %}{{ config.type}}{% endif %} {% if config.full %}full{% endif %} font{% if config.fontSize %}{{ config.fontSize }}{% else %}16{% endif %} text-center on-bold pad-all-12 {% if config.padSides %}pad-sides-{{ config.padSides }}{% endif %} {% if config.padBoth %}pad-both-{{ config.padBoth }}{% endif %}"
+  href="{{ data.link }}"
+  {% if config.dataId %}data-id="{{ config.dataId }}"{% endif %}
+  {% if data.openModal %}open-modal="{{ data.openModal }}"{% endif %}
+  >
+    {{ data.text }}
+  </a>
+
+{% endmacro %}

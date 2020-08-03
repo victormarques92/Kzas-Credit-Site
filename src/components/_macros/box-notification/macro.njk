@@ -1,0 +1,10 @@
+{% macro boxNotification(data) %}
+
+  <div class="box-notification row flex-column halign-middle valign-middle"
+    {% if data.waiting %}data-id="waiting"{% endif %}>
+    <img src="./assets/images/{{ data.image }}"/>
+
+    {{ data.content }}
+  </div>
+
+{% endmacro %}

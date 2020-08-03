@@ -1,0 +1,24 @@
+{% macro input(config, data) %}
+
+  <div class="input-component row flex-column full">
+
+    <label class="cl-gray font14 on-bold mg-bottom-12" {% if config.id %}for="{{ config.id }}" {% endif %}>
+      {{ data.label }}
+    </label>
+
+    {% if config.boxMoney %}<div class="box-money">{% endif %}
+    <input class="input-form cl-gray font16 pad-both-12 pad-sides-16 {% if config.mask %}{{ config.mask }}{% endif %}"
+    type="{% if config.type %}{{ config.type }}{% else %}text{% endif %}"
+    {% if config.id %}id="{{ config.id }}"{% endif %}
+    {% if config.placeholder %}placeholder="{{ config.placeholder }}" {% endif %}
+    {% if config.readonly %}readonly{% endif %}
+    {% if data.value %}value="{{ data.value }}"{% endif %}
+    />
+    {% if config.boxMoney %}
+      <span class="simbol">R$</span>
+    </div>
+    {% endif %}
+
+  </div>
+
+{% endmacro %}

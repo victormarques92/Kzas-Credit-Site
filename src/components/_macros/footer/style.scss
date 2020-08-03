@@ -1,0 +1,12 @@
+// sass-lint:disable nesting-depth
+
+@import 'deps';
+
+.footer {
+  border-top: 1px solid map-get($colors, 'gray-e7');
+  height: 80px;
+
+  .row {
+    height: 100%;
+  }
+}
